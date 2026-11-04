@@ -4,9 +4,10 @@ namespace GS
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private Path _path;
         [SerializeField] private float _speed;
         [SerializeField] private float _distanceToStop;
+        
+        private WaypointPath _waypointPath;
         
         private int _nextWayPointIndex;
         private int _waypointCount;
@@ -14,17 +15,17 @@ namespace GS
         
         private void Start()
         {
-            WayPoint firstWayPoint = _path.GetWayPoint(FIRST_WAYPOINT_INDEX);
+            WayPoint firstWayPoint = _waypointPath.GetWayPoint(FIRST_WAYPOINT_INDEX);
             transform.position = firstWayPoint.transform.position;
             
             _nextWayPointIndex = FIRST_WAYPOINT_INDEX + 1;
 
-            _waypointCount = _path.GetWaypointCount();
+            _waypointCount = _waypointPath.GetWaypointCount();
         }
 
         private void Update()
         {
-            Vector3 nextWaypointPosition = _path.GetWayPoint(_nextWayPointIndex).transform.position;
+            Vector3 nextWaypointPosition = _waypointPath.GetWayPoint(_nextWayPointIndex).transform.position;
             
             // Move to next waypoint
             Vector3 direction = nextWaypointPosition - transform.position;
@@ -43,6 +44,11 @@ namespace GS
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        public void SetPath(WaypointPath waypointPath)
+        {
+            _waypointPath = waypointPath;
         }
     }
 }

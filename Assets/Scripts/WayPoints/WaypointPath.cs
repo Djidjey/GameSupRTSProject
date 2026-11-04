@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GS
 {
-    public class Path : MonoBehaviour
+    public class WaypointPath : MonoBehaviour
     {
         [SerializeField] private WayPoint[] _wayPoints;
         
