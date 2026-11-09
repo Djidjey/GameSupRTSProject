@@ -65,6 +65,17 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 7540580793509279992}
   m_SourcePrefab: {fileID: 100100000, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+--- !u!114 &4075547489915733854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8773289906555174982, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+  m_PrefabInstance: {fileID: 4706187353672402712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &6450774279953984508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
@@ -85,4 +96,5 @@ MonoBehaviour:
   _enemyName: Flying enemy
   _enemyDescription: Enemy that can fly
   _initialHealthPoint: 2
+  _healthBarImage: {fileID: 4075547489915733854}
   _yOffset: 5

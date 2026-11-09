@@ -540,7 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02c1b847ed410e42b8fbb7fa1c65dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamager
-  _damagePoint: 0
+  _damagePoint: 2
+  _tag: Enemy
 --- !u!1001 &1036223934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -917,7 +918,7 @@ MonoBehaviour:
   _path:
   - {fileID: 1195191565}
   - {fileID: 401203116}
-  _prefabEnemy: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+  _prefabEnemy: {fileID: 46536650552300102, guid: 0a49a083661df8641b67040ffa4edb62, type: 3}
   _numberEnemyToSpawn: 1
   _intervalTimeSpawn: 0.1
 --- !u!4 &1514649600
@@ -1062,7 +1063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02c1b847ed410e42b8fbb7fa1c65dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamager
-  _damagePoint: 0
+  _damagePoint: 2
+  _tag: Enemy
 --- !u!1001 &2009899599
 PrefabInstance:
   m_ObjectHideFlags: 0

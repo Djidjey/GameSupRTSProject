@@ -174,11 +174,21 @@ MonoBehaviour:
   _enemyName: Armored Enemy
   _enemyDescription: Has an armor
   _initialHealthPoint: 5
-  _speed: 5
-  _distanceToStop: 0.2
+  _healthBarImage: {fileID: 7039078976001638116}
   _armorPercentage: 0.5
 --- !u!4 &6312554341425088502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
   m_PrefabInstance: {fileID: 1760671777933147810}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7039078976001638116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8773289906555174982, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+  m_PrefabInstance: {fileID: 1760671777933147810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image

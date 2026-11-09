@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GS
 {
@@ -12,6 +13,9 @@ namespace GS
         
         [Header("Health")]
         [SerializeField] private int _initialHealthPoint;
+
+        [Header("UI")]
+        [SerializeField] private Image _healthBarImage;
 #endregion
 
         // Health
@@ -23,6 +27,8 @@ namespace GS
         {
             _currentHealthPoint = _initialHealthPoint;
             _wayPointFollower = GetComponent<WayPointFollower>();
+            
+            UpdateHealthBarUI();
         }
 
         private void Update()
@@ -38,11 +44,18 @@ namespace GS
         public virtual void TakeDamage(int damage)
         {
             _currentHealthPoint -= damage;
+            
+            UpdateHealthBarUI();
 
             if (_currentHealthPoint <= 0)
             {
                 Die();
             }
+        }
+
+        private void UpdateHealthBarUI()
+        {
+            _healthBarImage.fillAmount = _currentHealthPoint / (float)_initialHealthPoint;
         }
 
         private void Die()
