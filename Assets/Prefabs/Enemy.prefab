@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3728406008340951126}
   - component: {fileID: 3867932331177466614}
   - component: {fileID: 363366521016907535}
+  - component: {fileID: 7503937626210368195}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -50,9 +51,6 @@ MonoBehaviour:
   _enemyName: Base Enemy
   _enemyDescription: This is the base enemy. Please don't use this prefab like this.
   _initialHealthPoint: 5
-  _hasArmor: 1
-  _speed: 5
-  _distanceToStop: 0.2
 --- !u!54 &3867932331177466614
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -101,6 +99,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7503937626210368195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786378126976511204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253d68f79974cb747be8dc7ad67a58d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GS.WayPointFollower
+  _speed: 5
+  _distanceToStop: 0.2
 --- !u!1 &7301895317469764998
 GameObject:
   m_ObjectHideFlags: 0

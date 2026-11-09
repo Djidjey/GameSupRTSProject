@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
       propertyPath: m_Name
-      value: FlyingEnemy Variant
+      value: FlyingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7503937626210368195, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: _speed
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3728406008340951126, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
     m_RemovedGameObjects: []
@@ -81,6 +85,4 @@ MonoBehaviour:
   _enemyName: Flying enemy
   _enemyDescription: Enemy that can fly
   _initialHealthPoint: 2
-  _speed: 7
-  _distanceToStop: 0.5
   _yOffset: 5
