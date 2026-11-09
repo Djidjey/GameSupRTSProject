@@ -15,11 +15,12 @@ namespace GS
         
         private void Start()
         {
+            // Set position at path start
             WayPoint firstWayPoint = _waypointPath.GetWayPoint(FIRST_WAYPOINT_INDEX);
             transform.position = firstWayPoint.transform.position;
             
+            // Setup data
             _nextWayPointIndex = FIRST_WAYPOINT_INDEX + 1;
-
             _waypointCount = _waypointPath.GetWaypointCount();
         }
 
@@ -30,7 +31,7 @@ namespace GS
             // Move to next waypoint
             Vector3 direction = nextWaypointPosition - transform.position;
             Vector3 normalizedDirection = direction.normalized;
-            transform.position += normalizedDirection * _speed * Time.deltaTime;
+            transform.position += normalizedDirection * (_speed * Time.deltaTime);
             
             // If waypoint reached -> go to next waypoint
             float distanceToWaypoint = Vector3.Distance(transform.position, nextWaypointPosition);

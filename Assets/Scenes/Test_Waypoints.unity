@@ -806,8 +806,8 @@ MonoBehaviour:
   - {fileID: 1195191565}
   - {fileID: 401203116}
   _prefabEnemy: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
-  _numberEnemyToSpawn: 2
-  _intervalTimeSpawn: 1
+  _numberEnemyToSpawn: 200
+  _intervalTimeSpawn: 0.1
 --- !u!4 &1514649600
 Transform:
   m_ObjectHideFlags: 0
