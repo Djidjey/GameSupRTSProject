@@ -171,9 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be0ad251b371904d9f58e00565aac0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GS.ArmoredEnemy
-  _enemyName: Armored Enemy
-  _enemyDescription: Has an armor
-  _initialHealthPoint: 5
+  _enemyData: {fileID: 11400000, guid: 8a94a35aab9b4214f8f231f41effce5d, type: 2}
   _healthBarImage: {fileID: 7039078976001638116}
   _armorPercentage: 0.5
 --- !u!4 &6312554341425088502 stripped

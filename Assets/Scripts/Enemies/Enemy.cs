@@ -7,12 +7,7 @@ namespace GS
     public class Enemy : MonoBehaviour
     {
 #region SerializeFields
-        [Header("Infos")] 
-        [SerializeField] private string _enemyName;
-        [SerializeField, TextArea(1, 5)] private string _enemyDescription;
-        
-        [Header("Health")]
-        [SerializeField] private int _initialHealthPoint;
+        [SerializeField] private EnemyData _enemyData;
 
         [Header("UI")]
         [SerializeField] private Image _healthBarImage;
@@ -25,8 +20,10 @@ namespace GS
 
         private void Awake()
         {
-            _currentHealthPoint = _initialHealthPoint;
+            _currentHealthPoint = _enemyData.InitialHealthPoint;
             _wayPointFollower = GetComponent<WayPointFollower>();
+            
+            _wayPointFollower.SetEnemyData(_enemyData);
             
             UpdateHealthBarUI();
         }
@@ -55,7 +52,7 @@ namespace GS
 
         private void UpdateHealthBarUI()
         {
-            _healthBarImage.fillAmount = _currentHealthPoint / (float)_initialHealthPoint;
+            _healthBarImage.fillAmount = _currentHealthPoint / (float)_enemyData.InitialHealthPoint;
         }
 
         private void Die()

@@ -6,15 +6,9 @@ namespace GS
     {
         private const int FIRST_WAYPOINT_INDEX = 0;
         
-        [Header("Movement")]
-        [SerializeField]
-        [Tooltip("Base speed when moving, must be a positive value")]
-        [Min(0)]
-        private float _speed;
-        [SerializeField]
-        [Tooltip("Distance to waypoint to change next way point"), Range(0, 5)]
-        private float _distanceToStop;
         [SerializeField] private WaypointPath _waypointPath;
+
+        private EnemyData _enemyData;
         
         // Waypoints
         private int _nextWayPointIndex;
@@ -29,6 +23,11 @@ namespace GS
             // Setup data
             _nextWayPointIndex = FIRST_WAYPOINT_INDEX + 1;
             _waypointCount = _waypointPath.GetWaypointCount();
+        }
+
+        public void SetEnemyData(EnemyData enemyData)
+        {
+            _enemyData = enemyData;
         }
 
         private void Update()
@@ -53,7 +52,7 @@ namespace GS
         {
             Vector3 direction = nextWaypointPosition - transform.position;
             Vector3 normalizedDirection = direction.normalized;
-            transform.position += normalizedDirection * (_speed * Time.deltaTime);
+            transform.position += normalizedDirection * (_enemyData.Speed * Time.deltaTime);
         }
 
         private bool IsAtWaypoint(Vector3 nextWaypointPosition)
@@ -61,7 +60,7 @@ namespace GS
             Vector2 selfPosition = new Vector2(transform.position.x, transform.position.z);
             Vector2 wayPointPosition = new Vector2(nextWaypointPosition.x, nextWaypointPosition.z);
             
-            return Vector2.Distance(selfPosition, wayPointPosition) < _distanceToStop;
+            return Vector2.Distance(selfPosition, wayPointPosition) < _enemyData.DistanceToStop;
         }
         
         public void SetPath(WaypointPath waypointPath)

@@ -93,8 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf913963edf91e43abc6c28c18cb00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GS.FlyingEnemy
-  _enemyName: Flying enemy
-  _enemyDescription: Enemy that can fly
-  _initialHealthPoint: 2
+  _enemyData: {fileID: 11400000, guid: eb8a590bc57cbb64b90dfe819868500b, type: 2}
   _healthBarImage: {fileID: 4075547489915733854}
   _yOffset: 5
