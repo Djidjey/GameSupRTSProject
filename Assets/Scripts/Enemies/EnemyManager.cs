@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GS
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemyManager : MonoBehaviour
     {
         [Header("Path")]
         [SerializeField] private WaypointPath[] _path;
