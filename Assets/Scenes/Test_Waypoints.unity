@@ -1328,7 +1328,7 @@ GameObject:
   - component: {fileID: 1514649600}
   - component: {fileID: 1514649599}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,9 +1349,7 @@ MonoBehaviour:
   _path:
   - {fileID: 1195191565}
   - {fileID: 401203116}
-  _prefabEnemy: {fileID: 46536650552300102, guid: 0a49a083661df8641b67040ffa4edb62, type: 3}
-  _numberEnemyToSpawn: 20
-  _intervalTimeSpawn: 0.5
+  _wave: {fileID: 11400000, guid: 064cd263daa896049b0e9e1a17810295, type: 2}
   _HUD: {fileID: 1580805925}
 --- !u!4 &1514649600
 Transform:

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GS.EnemyData
   _enemyName: Ogor
   _enemyDescription: Sac a patate
-  _initialHealthPoint: 1
+  _initialHealthPoint: 50
   _speed: 5
   _distanceToStop: 0.2

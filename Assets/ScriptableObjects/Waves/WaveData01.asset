@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f5c55bbb6de154ea42962cc52ceab1, type: 3}
+  m_Name: WaveData01
+  m_EditorClassIdentifier: Assembly-CSharp::GS.WaveData
+  _prefabToSpawn:
+  - {fileID: 6716105850269355341, guid: fe0a83d0b59942e4f8fc87e8e8ef7420, type: 3}
+  - {fileID: 6716105850269355341, guid: fe0a83d0b59942e4f8fc87e8e8ef7420, type: 3}
+  - {fileID: 46536650552300102, guid: 0a49a083661df8641b67040ffa4edb62, type: 3}
+  - {fileID: 46536650552300102, guid: 0a49a083661df8641b67040ffa4edb62, type: 3}
+  - {fileID: 46536650552300102, guid: 0a49a083661df8641b67040ffa4edb62, type: 3}
+  - {fileID: 6450774279953984508, guid: 521caa864b6a7ef4b8ea78b1a36e9ae9, type: 3}
+  - {fileID: 6450774279953984508, guid: 521caa864b6a7ef4b8ea78b1a36e9ae9, type: 3}
+  _spawnIntervalInSeconds: 0.5

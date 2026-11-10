@@ -8,10 +8,8 @@ namespace GS
         [Header("Path")]
         [SerializeField] private WaypointPath[] _path;
         
-        [Header("Enemies")]
-        [SerializeField] private GameObject _prefabEnemy;
-        [SerializeField] private int _numberEnemyToSpawn;
-        [SerializeField] private float _intervalTimeSpawn;
+        [Header("Wave")]
+        [SerializeField] private WaveData _wave;
         
         [Header("UI")]
         [SerializeField] private HUD _HUD;
@@ -23,10 +21,10 @@ namespace GS
 
         private IEnumerator SpawnEnemiesCoroutine()
         {
-            for (int i = 0; i < _numberEnemyToSpawn; i++)
+            for (int i = 0; i < _wave.NumberEnemyToSpawn; i++)
             {
                 // Spawn enemy
-                GameObject instanceEnemy = Instantiate(_prefabEnemy, Vector3.zero, Quaternion.identity);
+                GameObject instanceEnemy = Instantiate(_wave.PrefabToSpawn[i], Vector3.zero, Quaternion.identity);
                 Enemy enemy = instanceEnemy.GetComponent<Enemy>();
 
                 // Set random path
@@ -36,11 +34,8 @@ namespace GS
                 // Update UI
                 _HUD.IncreaseEnemyCount();
                 
-                yield return new WaitForSeconds(_intervalTimeSpawn);
-                // i++
+                yield return new WaitForSeconds(_wave.SpawnIntervalInSeconds);
             }
-            // no more enemy to spawn
-            // stop
         }
     }
 }
