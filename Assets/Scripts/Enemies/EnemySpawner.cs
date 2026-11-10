@@ -1,4 +1,4 @@
-using TMPro;
+using System.Collections;
 using UnityEngine;
 
 namespace GS
@@ -16,29 +16,15 @@ namespace GS
         [Header("UI")]
         [SerializeField] private HUD _HUD;
         
-        private float _spawnTimer;
-        private int _numberEnemySpawned;
-        
         private void Start()
         {
-            _spawnTimer = 0;
-            _numberEnemySpawned = 0;
+            StartCoroutine(SpawnEnemiesCoroutine());
         }
 
-        private void Update()
+        private IEnumerator SpawnEnemiesCoroutine()
         {
-            if (_numberEnemySpawned >= _numberEnemyToSpawn)
+            for (int i = 0; i < _numberEnemyToSpawn; i++)
             {
-                return;
-            }
-            
-            _spawnTimer += Time.deltaTime;
-
-            if (_spawnTimer > _intervalTimeSpawn)
-            {
-                _spawnTimer = 0;
-                _numberEnemySpawned++;
-                
                 // Spawn enemy
                 GameObject instanceEnemy = Instantiate(_prefabEnemy, Vector3.zero, Quaternion.identity);
                 Enemy enemy = instanceEnemy.GetComponent<Enemy>();
@@ -49,7 +35,12 @@ namespace GS
                 
                 // Update UI
                 _HUD.IncreaseEnemyCount();
+                
+                yield return new WaitForSeconds(_intervalTimeSpawn);
+                // i++
             }
+            // no more enemy to spawn
+            // stop
         }
     }
 }
