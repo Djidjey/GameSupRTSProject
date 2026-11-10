@@ -62,5 +62,11 @@ namespace GS
         {
             Destroy(gameObject);
         }
+
+        private void OnDestroy()
+        {
+            HUD hud = FindAnyObjectByType<HUD>();
+            hud.DecreaseEnemyCount();
+        }
     }
 }
