@@ -19,7 +19,7 @@ namespace CC
         private int _currentHealthPoint;
 
         [HideInInspector]
-        public UnityEvent deathEvent;
+        public UnityEvent<Enemy> deathEvent;
         
         private void Start()
         {
@@ -56,7 +56,7 @@ namespace CC
 
         private void Die()
         {
-            deathEvent.Invoke();
+            deathEvent.Invoke(this);
             Destroy(gameObject);
         }
     }

@@ -18,13 +18,17 @@ namespace CC
         
         [SerializeField] private List<EnemyWave> _waves;
         
+        
         private State _state = State.Idle;
         private int _currentWave = 0;
         private int _currentEnemyGroup = 0;
         private float _lastWaveSpawnTime;
         private int _currentEnemyCount = 0;
 
+        private List<Enemy> _activeEnemies = new List<Enemy>();
         private Transform _playerTransform;
+
+        public List<Enemy> ActiveEnemies => _activeEnemies;
 
         private void Start()
         {
@@ -52,7 +56,7 @@ namespace CC
                             Enemy instance = Instantiate(enemyGroup.enemies[i], randomSpawnPosition, Quaternion.identity);
                             instance.deathEvent.AddListener(OnEnemyDeath);
                             _currentEnemyCount++;
-                            
+                            _activeEnemies.Add(instance);
                         }
 
                         _currentEnemyGroup++;
@@ -91,9 +95,10 @@ namespace CC
             }
         }
 
-        private void OnEnemyDeath()
+        private void OnEnemyDeath(Enemy enemy)
         {
             _currentEnemyCount--;
+            _activeEnemies.Remove(enemy);
         }
     }
 }

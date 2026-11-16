@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d3972098cb7be46863e9026f3d7b46, type: 3}
+  m_Name: TW_Archer
+  m_EditorClassIdentifier: Assembly-CSharp::GS.TowerData
+  _cost: 50
+  _range: 10
+  _ratePerSeconds: 1
+  _towerTargetingMode: 1
+  _damage: 2
