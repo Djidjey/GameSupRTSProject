@@ -14,6 +14,7 @@ namespace GS
         
         public void BuildTower(BuildSpot buildSpot)
         {
+            if (buildSpot.State == BuildSpotState.Occupied) return;
             Instantiate(_towerPrefab, buildSpot.transform.position, Quaternion.identity);
 
             _towerBuilt.Invoke(buildSpot);
