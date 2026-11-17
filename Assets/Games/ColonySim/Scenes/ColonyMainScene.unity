@@ -233,7 +233,6 @@ Transform:
   m_Children:
   - {fileID: 1336005816}
   - {fileID: 1970130732}
-  - {fileID: 2137973632}
   - {fileID: 566123508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -718,7 +717,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -743,7 +742,7 @@ Transform:
   m_GameObject: {fileID: 809688921}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 11.8, y: 12.49, z: 5.01}
+  m_LocalPosition: {x: 13, y: 12.49, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -911,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a9f2a7b0c9d9146b21993c893b900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
+  _currencyAmountText: {fileID: 1102382412}
   _uiCreateBuilding: {fileID: 1716939068}
 --- !u!1 &1102382410
 GameObject:
@@ -1053,6 +1053,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102382410}
   m_CullTransparentMesh: 1
+--- !u!1 &1244384894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244384895}
+  - component: {fileID: 1244384896}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1244384895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244384894}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1336005816}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1244384896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244384894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3ac56164b726d4abbfe8f31b59a235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemymanager
+  _enemyPrefab: {fileID: 5237311261550039620, guid: e4781ebae97e3cd4cb885c112295349a, type: 3}
+  _enemySpawnerPrefab: {fileID: 3788034448392366282, guid: b12c85f03962f96469159688a0fc7785, type: 3}
+  _waveCount: 5
+  _enemyCountPerWave: 10
+  _timeBetweenWaves: 5
+  _timeBetweenSpawns: 1.5
 --- !u!1 &1258981020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1412,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2137973632}
+  - {fileID: 1244384895}
   m_Father: {fileID: 562766339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1336005817
@@ -1378,6 +1430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   _colonyManager: {fileID: 2137973633}
+  _enemyManager: {fileID: 1244384896}
+  _initialCurrencyAmount: 100
 --- !u!1 &1696535693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,12 +2086,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137973631}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 562766339}
+  m_Father: {fileID: 1336005816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2137973633
 MonoBehaviour:
@@ -2051,9 +2105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c319e5ac7ffb204498689038339bbd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColonyManager
-  _prefabDefenseBuilding: {fileID: 0}
-  _prefabAttackBuilding: {fileID: 0}
-  _prefabProductionBuilding: {fileID: 0}
+  _prefabDefenseBuilding: {fileID: 4980381189330878557, guid: 7f03eb48343771745adfbcb6d9e80f03, type: 3}
+  _prefabAttackBuilding: {fileID: 6274877559176518560, guid: 95bc0a45e58991f47b6046397da3810f, type: 3}
+  _prefabProductionBuilding: {fileID: 4165305906179139338, guid: 18e1c26b31a160f4d8b22a7448ef5bbc, type: 3}
+  _prefabMainBase: {fileID: 6263127161562019004, guid: cc54eed24e0e25f4cbb739a75e97f214, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

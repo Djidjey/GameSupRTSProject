@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: World Data
   m_EditorClassIdentifier: Assembly-CSharp::CS.WorldData
   _worldGridWidth: 25
-  _worldGridHeight: 10
+  _worldGridHeight: 15
+  _spawnPointCount: 1

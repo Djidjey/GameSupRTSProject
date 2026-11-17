@@ -1,10 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 namespace CS
 {
     public class MainMenu : MonoBehaviour
     {
+        [Header("Static menu")] 
+        [SerializeField] private TextMeshProUGUI _currencyAmountText;
+        
+        [Header("Sub Menu")]
         [SerializeField] private CreateBuildingUI _uiCreateBuilding;
+        
         
         public CreateBuildingUI UICreateBuildingUI => _uiCreateBuilding;
 
@@ -23,7 +29,12 @@ namespace CS
 
         private void Update()
         {
-
+            
+        }
+        
+        public void UpdateCurrencyAmount(int amount)
+        {
+            _currencyAmountText.text = amount.ToString();
         }
     }
 }

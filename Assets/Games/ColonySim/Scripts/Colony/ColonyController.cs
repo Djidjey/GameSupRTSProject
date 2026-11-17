@@ -9,7 +9,8 @@ namespace CS
     {
         Defense,
         Attack,
-        Production
+        Production,
+        MainBase
     }
     
     public class ColonyController : MonoBehaviour
@@ -70,7 +71,6 @@ namespace CS
                     if (_buildingCreationExecuted || 
                         (!isPointerOverUI && _clickInputActionReference.action.WasPerformedThisFrame()))
                     {
-                        // Click world to build
                         MainMenu.Instance.UICreateBuildingUI.Close();
                         _state = State.Idle;
                         _selectedTile = null;

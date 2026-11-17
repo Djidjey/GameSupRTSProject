@@ -1,14 +1,21 @@
 using System;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CS
 {
     public class ColonyManager : MonoBehaviour
     {
-        [SerializeField] private GameObject _prefabDefenseBuilding;
-        [SerializeField] private GameObject _prefabAttackBuilding;
-        [SerializeField] private GameObject _prefabProductionBuilding;
+        [SerializeField] private Building _prefabDefenseBuilding;
+        [SerializeField] private Building _prefabAttackBuilding;
+        [SerializeField] private Building _prefabProductionBuilding;
+        [SerializeField] private Building _prefabMainBase;
+        
+        private List<Building> _buildings = new();
+        private Building _mainBaseBuilding;
+        
+        public Building MainBaseBuilding => _mainBaseBuilding;
+        
         
         private void Start()
         {
@@ -22,23 +29,48 @@ namespace CS
 
         public void CreateBuilding(GridTile tile, BuildingType buildingType)
         {
-            GameObject instance;
+            Building instance = null;
             switch (buildingType)
             {
                 case BuildingType.Defense:
-                    instance = Instantiate(_prefabDefenseBuilding);
+                    if (LevelManager.Instance.HasEnoughCurrency(_prefabDefenseBuilding.CurrencyCost))
+                    {
+                        LevelManager.Instance.TakeCurrency(_prefabDefenseBuilding.CurrencyCost);
+                        instance = Instantiate(_prefabDefenseBuilding);
+                    }
                     break;
                 case BuildingType.Attack:
-                    instance = Instantiate(_prefabAttackBuilding);
+                    if (LevelManager.Instance.HasEnoughCurrency(_prefabAttackBuilding.CurrencyCost))
+                    {
+                        LevelManager.Instance.TakeCurrency(_prefabAttackBuilding.CurrencyCost);
+                        instance = Instantiate(_prefabAttackBuilding);
+                    }
                     break;
                 case BuildingType.Production:
-                    instance = Instantiate(_prefabProductionBuilding);
+                    if (LevelManager.Instance.HasEnoughCurrency(_prefabProductionBuilding.CurrencyCost))
+                    {
+                        LevelManager.Instance.TakeCurrency(_prefabProductionBuilding.CurrencyCost);
+                        instance = Instantiate(_prefabProductionBuilding);
+                    }
+                    break;
+                case BuildingType.MainBase:
+                    if (LevelManager.Instance.HasEnoughCurrency(_prefabMainBase.CurrencyCost))
+                    {
+                        LevelManager.Instance.TakeCurrency(_prefabMainBase.CurrencyCost);
+                        instance = Instantiate(_prefabMainBase);
+                    }
+                    _mainBaseBuilding = instance;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(buildingType), buildingType, null);
             }
-            
-            instance.transform.position = tile.transform.position;
+
+            if (instance != null)
+            {
+                instance.transform.position = tile.transform.position;
+                StartCoroutine(instance.SpawnAnimation(0.0f));
+                _buildings.Add(instance);
+            }
         }
     }
 }
