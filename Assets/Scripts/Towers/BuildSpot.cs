@@ -11,6 +11,8 @@ namespace GS
             Free, 
             Occupied
         }
+
+        [SerializeField] private GameObject _view;
         
         private State _state;
         private Vector3 _initialScale;
@@ -18,17 +20,17 @@ namespace GS
         private void Awake()
         {
             _state = State.Free;
-            _initialScale = gameObject.transform.localScale;
+            _initialScale = _view.transform.localScale;
         }
 
         public void Highlight()
         { 
-            transform.localScale = _initialScale * 1.5f;
+            _view.transform.localScale = _initialScale * 1.5f;
         }
 
         public void StopHighlight()
         {
-            transform.localScale = _initialScale;
+            _view.transform.localScale = _initialScale;
         }
     }
 }
