@@ -17,7 +17,12 @@ namespace GS
         private void Start()
         {
             _buildSpots = GetComponentsInChildren<BuildSpot>().ToList();
-            FindAnyObjectByType<TowerManager>()._towerBuilt.AddListener(OnTowerBuilt);
+            FindAnyObjectByType<TowerManager>()._towerBuilt += OnTowerBuilt;
+        }
+
+        private void OnDestroy()
+        {
+            FindAnyObjectByType<TowerManager>()._towerBuilt -= OnTowerBuilt;
         }
 
         private void Update()

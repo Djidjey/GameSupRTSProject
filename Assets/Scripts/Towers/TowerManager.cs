@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,11 +11,12 @@ namespace GS
         /// <summary>
         /// Callback when a new tower is built, return the build spot
         /// </summary>
-        public UnityEvent<BuildSpot> _towerBuilt;
+        public Action<BuildSpot> _towerBuilt;
         
         public void BuildTower(BuildSpot buildSpot)
         {
             if (buildSpot.State == BuildSpotState.Occupied) return;
+            
             Instantiate(_towerPrefab, buildSpot.transform.position, Quaternion.identity);
 
             _towerBuilt.Invoke(buildSpot);
