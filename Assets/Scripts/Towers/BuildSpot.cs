@@ -3,23 +3,24 @@ using UnityEngine.InputSystem;
 
 namespace GS
 {
+    public enum BuildSpotState
+    {
+        Free, 
+        Occupied
+    }
 
     public class BuildSpot : MonoBehaviour
     {
-        private enum State
-        {
-            Free, 
-            Occupied
-        }
-
         [SerializeField] private GameObject _view;
         
-        private State _state;
+        private BuildSpotState _state;
         private Vector3 _initialScale;
+        
+        public BuildSpotState State => _state;
         
         private void Awake()
         {
-            _state = State.Free;
+            _state = BuildSpotState.Free;
             _initialScale = _view.transform.localScale;
         }
 
@@ -31,6 +32,11 @@ namespace GS
         public void StopHighlight()
         {
             _view.transform.localScale = _initialScale;
+        }
+        
+        public void SetOccupied()
+        {
+            _state = BuildSpotState.Occupied;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace GS
         private void Start()
         {
             _buildSpots = GetComponentsInChildren<BuildSpot>().ToList();
+            FindAnyObjectByType<TowerManager>()._towerBuilt.AddListener(OnTowerBuilt);
         }
 
         private void Update()
@@ -37,15 +38,15 @@ namespace GS
                         _highlightedBuildSpot.Highlight();
                         
                         // Click
-                        if (InputSystem.actions.FindAction("Attack").WasPressedThisFrame())
+                        if (buildSpot.State == BuildSpotState.Free && InputSystem.actions.FindAction("Attack").WasPressedThisFrame())
                         {
                             if (_uiBuildSpotInstance != null)
                             {
-                                Destroy(_uiBuildSpotInstance);
+                                Destroy(_uiBuildSpotInstance.gameObject);
                             }
                             
                             _uiBuildSpotInstance = Instantiate(_uiBuildSpotPrefab, _highlightedBuildSpot.transform);
-                            _uiBuildSpotInstance.Init(_highlightedBuildSpot.transform.position);
+                            _uiBuildSpotInstance.Init(_highlightedBuildSpot);
                         }
                     }
                 }
@@ -55,6 +56,11 @@ namespace GS
                 _highlightedBuildSpot?.StopHighlight();
                 _highlightedBuildSpot = null;
             }
+        }
+
+        private void OnTowerBuilt(BuildSpot buildSpot)
+        {
+            buildSpot.SetOccupied();
         }
     }
 }

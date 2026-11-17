@@ -10,7 +10,7 @@ namespace GS
         [SerializeField] private Button _buttonTower2;
         [SerializeField] private Button _buttonTower3;
 
-        private Vector3 _buildPosition;
+        private BuildSpot _buildSpot;
         
         private void Awake()
         {
@@ -19,15 +19,15 @@ namespace GS
             _buttonTower3.onClick.AddListener(OnButtonClicked);
         }
 
-        public void Init(Vector3 buildPosition)
+        public void Init(BuildSpot buildSpot)
         {
-            _buildPosition = buildPosition;
+            _buildSpot = buildSpot;
         }
 
         private void OnButtonClicked()
         {
             TowerManager towerManager = FindAnyObjectByType<TowerManager>();
-            towerManager.BuildTower(_buildPosition);
+            towerManager.BuildTower(_buildSpot);
         }
     }
 }
