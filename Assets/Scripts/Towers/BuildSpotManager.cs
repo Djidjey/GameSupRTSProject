@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace GS
@@ -29,13 +30,18 @@ namespace GS
         {
             Ray ray = Camera.main.ScreenPointToRay(Pointer.current.position.ReadValue());
 
+            bool hasClickMouse = InputSystem.actions.FindAction("Attack").WasPressedThisFrame();
+
             bool hasHit = Physics.Raycast(ray, out RaycastHit hit);
             if (hasHit)
             {
+                bool hasHitTower = false;
                 foreach (BuildSpot buildSpot in _buildSpots)
                 {
                     if (hit.collider.gameObject == buildSpot.gameObject)
                     {
+                        hasHitTower = true;
+                        
                         // Highlight
                         _highlightedBuildSpot?.StopHighlight();
 
@@ -43,11 +49,11 @@ namespace GS
                         _highlightedBuildSpot.Highlight();
                         
                         // Click
-                        if (buildSpot.State == BuildSpotState.Free && InputSystem.actions.FindAction("Attack").WasPressedThisFrame())
+                        if (buildSpot.State == BuildSpotState.Free && hasClickMouse)
                         {
                             if (_uiBuildSpotInstance != null)
                             {
-                                Destroy(_uiBuildSpotInstance.gameObject);
+                                TryCloseUI();
                             }
                             
                             _uiBuildSpotInstance = Instantiate(_uiBuildSpotPrefab, _highlightedBuildSpot.transform);
@@ -55,12 +61,30 @@ namespace GS
                         }
                     }
                 }
+
+                if (!hasHitTower && hasClickMouse)
+                {
+                    TryCloseUI();
+                }
             }
             else
             {
                 _highlightedBuildSpot?.StopHighlight();
                 _highlightedBuildSpot = null;
+                
+                if (hasClickMouse && !EventSystem.current.currentSelectedGameObject)
+                {
+                    TryCloseUI();
+                }
             }
+        }
+
+        private bool TryCloseUI()
+        {
+            if (_uiBuildSpotInstance == null) return false;
+            
+            _uiBuildSpotInstance.Close();
+            return true;
         }
 
         private void OnTowerBuilt(BuildSpot buildSpot)

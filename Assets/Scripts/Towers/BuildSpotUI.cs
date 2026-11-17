@@ -28,6 +28,11 @@ namespace GS
         {
             TowerManager towerManager = FindAnyObjectByType<TowerManager>();
             towerManager.BuildTower(_buildSpot);
+            Close();
+        }
+
+        public void Close()
+        {
             Destroy(gameObject);
         }
     }
