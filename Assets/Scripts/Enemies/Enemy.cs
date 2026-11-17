@@ -29,20 +29,6 @@ namespace GS
             UpdateHealthBarUI();
         }
 
-        private void Update()
-        {
-            InputAction jumpAction = InputSystem.actions.FindAction("Jump");
-
-            if (jumpAction.IsPressed())
-            {
-                Debug.Log("Jump");
-            }
-
-            InputAction moveAction = InputSystem.actions.FindAction("Move");
-            Vector2 moveVector = moveAction.ReadValue<Vector2>();
-            Debug.Log("moveVector: " + moveVector);
-        }
-
         public void SetPath(WaypointPath waypointPath)
         {
             _wayPointFollower.SetPath(waypointPath);
